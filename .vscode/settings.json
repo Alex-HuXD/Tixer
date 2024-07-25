@@ -1,0 +1,7 @@
+{
+    "yaml.schemas": {
+        "kubernetes": "*.yml",
+        "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone-strict/all.json": "file:///Users/xdev/Desktop/profolio%20projects/Tixer/infra/k8s/auth-svc-depl.yaml",
+        "https://raw.githubusercontent.com/GoogleContainerTools/skaffold/main/docs-v2/content/en/schemas/v4beta5.json": "file:///Users/xdev/Desktop/profolio%20projects/Tixer/skaffold.yaml"
+    }
+}
