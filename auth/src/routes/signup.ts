@@ -12,7 +12,7 @@ router.post(
         body('password')
             .trim()
             .isLength({ min: 6, max: 20 })
-            .withMessage('Password must be 6 to 20 characters long!'),
+            .withMessage('Password must be 6 to 20 characters long!!!'),
     ],
     (req: Request, res: Response) => {
         const errors = validationResult(req)
@@ -20,12 +20,9 @@ router.post(
         if (!errors.isEmpty()) {
             throw new RequestValidationError(errors.array())
         }
-
         console.log('creating user...')
 
         throw new DatabaseConnectionError()
-
-        res.send({})
     }
 )
 
