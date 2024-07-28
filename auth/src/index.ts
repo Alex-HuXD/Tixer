@@ -8,7 +8,7 @@ import { signinRouter } from './routes/signin'
 import { signoutRouter } from './routes/signout'
 import { signupRouter } from './routes/signup'
 import { errorHandler } from './middlewares/error-handler'
-import { NotFoundError } from './errors/not-found-error'
+import { BadRequestError } from './errors/bad-request-error'
 
 const app = express()
 
@@ -22,7 +22,7 @@ app.use(signupRouter)
 
 // not found handler
 app.all('*', async () => {
-    throw new NotFoundError()
+    throw new BadRequestError('page not found')
 })
 
 // error handler

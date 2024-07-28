@@ -5,10 +5,9 @@ export class RequestValidationError extends CustomError {
     statusCode = 400
     constructor(public errors: ValidationError[]) {
         super('Validation error params!')
-        Object.setPrototypeOf(this, RequestValidationError.prototype)
     }
 
-    serializeError() {
+    serializeError = () => {
         const errorMessages = this.errors.map(err => ({
             message: err.msg,
             field: err.type === 'field' ? err.path : err.type,
