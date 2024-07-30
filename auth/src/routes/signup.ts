@@ -17,7 +17,7 @@ router.post(
             .isLength({ min: 6, max: 20 })
             .withMessage('Password must be 6 to 20 characters long!!!'),
     ],
-    validateRequest,
+    [validateRequest],
     async (req: Request, res: Response) => {
         // create user
         const { email, password } = req.body
