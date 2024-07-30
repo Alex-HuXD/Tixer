@@ -18,10 +18,12 @@ spec:
       containers:
         - name: auth
           image: huxdev/tixer-auth
-          resources:
-            limits:
-              memory: "256Mi"
-              cpu: "250m"
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: jwt
 ---
 apiVersion: v1
 kind: Service

@@ -1,8 +1,10 @@
 import express, { Request, Response } from 'express'
-import { body, validationResult } from 'express-validator'
-import { RequestValidationError } from '../errors/request-validation-error'
+import { body } from 'express-validator'
+import jwt from 'jsonwebtoken'
+
 import { User } from '../models/user'
 import { BadRequestError } from '../errors/bad-request-error'
+import { validateRequest } from '../middlewares/validateRequest'
 
 const router = express.Router()
 
@@ -15,13 +17,8 @@ router.post(
             .isLength({ min: 6, max: 20 })
             .withMessage('Password must be 6 to 20 characters long!!!'),
     ],
+    validateRequest,
     async (req: Request, res: Response) => {
-        const errors = validationResult(req)
-
-        if (!errors.isEmpty()) {
-            throw new RequestValidationError(errors.array())
-        }
-
         // create user
         const { email, password } = req.body
         const existingUser = await User.findOne({ email })
@@ -31,6 +28,20 @@ router.post(
         }
         const user = User.build({ email, password })
         await user.save()
+
+        // JWT
+        const userJwt = jwt.sign(
+            {
+                id: user.id,
+                email: user.email,
+            },
+            process.env.JWT_KEY as string
+        )
+        // store jwt to session
+        req.session = {
+            jwt: userJwt,
+        }
+
         return res.send(user).status(201)
     }
 )
