@@ -42,7 +42,7 @@ router.post(
             jwt: userJwt,
         }
 
-        return res.send(user).status(201)
+        return res.status(201).send(user)
     }
 )
 
