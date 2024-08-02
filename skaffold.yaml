@@ -17,3 +17,11 @@ build:
         manual:
           - dest: .
             src: "src/**/*.ts"
+    - image: huxdev/tixer-client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/**/*.{tsx,ts,js,jsx}"
