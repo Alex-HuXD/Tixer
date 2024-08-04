@@ -11,7 +11,7 @@ type Inputs = {
     password: string
 }
 
-const Signup = () => {
+const Signin = () => {
     const {
         register,
         handleSubmit,
@@ -23,7 +23,7 @@ const Signup = () => {
     const router = useRouter()
 
     const onSubmit: SubmitHandler<Inputs> = async data => {
-        const response = await apiCall({ url: '/api/users/signup', method: 'post', body: data })
+        const response = await apiCall({ url: '/api/users/signin', method: 'post', body: data })
         if (response) {
             setApiSuccess(true)
             setTimeout(() => router.push('/'), 2000)
@@ -52,7 +52,7 @@ const Signup = () => {
                     <p>This field is required, password need to be at least 6 characters long</p>
                 )}
 
-                <input type="submit" value={'Sign Up'} />
+                <input type="submit" value={'Sign in'} />
             </form>
             {apiErrors}
             {apiSuccess && <h3 className="apiRes">Successfully signed up</h3>}
@@ -60,4 +60,4 @@ const Signup = () => {
     )
 }
 
-export default Signup
+export default Signin
