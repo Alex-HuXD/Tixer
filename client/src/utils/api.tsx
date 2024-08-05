@@ -5,10 +5,10 @@ const baseUrl =
     typeof window === 'undefined'
         ? 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local'
         : ''
-const headersList = headers()
-const headersObj = Object.fromEntries(headersList.entries())
 
 export const getCurrentUser = async () => {
+    const headersList = headers()
+    const headersObj = Object.fromEntries(headersList.entries())
     try {
         const response = await axios.get(`${baseUrl}/api/users/currentuser`, {
             headers: { ...headersObj },

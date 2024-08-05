@@ -13,11 +13,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     const currentUser = await getCurrentUser()
-    console.log('user at app', currentUser)
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Nav />
+                <Nav currentUser={currentUser} />
                 {children}
             </body>
         </html>
