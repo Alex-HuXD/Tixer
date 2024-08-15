@@ -30,23 +30,27 @@ const Signin = () => {
         } else {
             setApiSuccess(false)
         }
+        router.refresh()
     }
 
     return (
-        <div className="formContainer">
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mt-36">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <label>Email</label>
                 <input
                     {...register('email', {
                         required: true,
                     })}
                     type="email"
+                    className="text-white"
                 />
                 {errors?.email && <p>This field is required</p>}
                 <label>Password</label>
                 <input
                     {...register('password', { required: true, minLength: 6 })}
                     type="password"
+                    className="text-white"
+                    autoComplete="section-blue current-password"
                 />
                 {errors?.password && (
                     <p>This field is required, password need to be at least 6 characters long</p>
