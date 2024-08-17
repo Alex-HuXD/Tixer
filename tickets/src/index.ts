@@ -11,14 +11,15 @@ const start = async () => {
         throw new Error('env value MONGODB_URI not found')
     }
     try {
+        // todo: add mongodb connection
         await mongoose.connect(process.env.MONGODB_URI)
         console.log('connected to mongodb')
     } catch (err) {
-        console.log('auth database connection error', err)
+        console.log('tickets database connection error', err)
     }
 
     app.listen(3000, () => {
-        console.log('auth svc running at port 3000!')
+        console.log('tickets svc running at port 3000!')
     })
 }
 

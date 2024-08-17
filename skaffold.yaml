@@ -25,3 +25,11 @@ build:
         manual:
           - dest: .
             src: "src/**/*.{tsx,ts,js,jsx}"
+    - image: huxdev/tixer-tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/**/*.{tsx,ts,js,jsx}"
