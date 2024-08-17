@@ -1,13 +1,12 @@
 import 'express-async-errors'
 import express from 'express'
 import cookieSession from 'cookie-session'
+import { errorHandler, BadRequestError } from '@xd-dev/tixer-common'
 
 import { currentUserRouter } from './routes/current-user'
 import { signinRouter } from './routes/signin'
 import { signoutRouter } from './routes/signout'
 import { signupRouter } from './routes/signup'
-import { errorHandler } from './middlewares/error-handler'
-import { BadRequestError } from './errors/bad-request-error'
 
 const app = express()
 app.set('trust proxy', true)

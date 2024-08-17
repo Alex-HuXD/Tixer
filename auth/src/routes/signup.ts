@@ -1,10 +1,9 @@
 import express, { Request, Response } from 'express'
 import { body } from 'express-validator'
 import jwt from 'jsonwebtoken'
+import { BadRequestError, validateRequest } from '@xd-dev/tixer-common'
 
 import { User } from '../models/user'
-import { BadRequestError } from '../errors/bad-request-error'
-import { validateRequest } from '../middlewares/validateRequest'
 
 const router = express.Router()
 
